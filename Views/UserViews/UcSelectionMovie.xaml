@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Chinh_C1_Cinemas.UcSelectionMovie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chinh_C1_Cinemas" xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <local:StatusToStringConverter x:Key="statusToStringConverter"/>
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:FontAwesome Icon="Edit" />
+                                <ContentPresenter />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Border CornerRadius="10" Background="#EFF2F7">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Members Data Grid-->
+            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      CellStyle="{DynamicResource DataGridCellStyle1}" 
+                      x:Name="dgMovies"
+                      Style="{DynamicResource DataGridStyle1}"
+                      Grid.Row="3">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" 
+                                        Binding="{Binding Id}" IsReadOnly="True"  Width="Auto"/>
+
+                    <DataGridTextColumn Header="Name" 
+                                        Binding="{Binding Name}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="Description" 
+                                        Binding="{Binding Description}" IsReadOnly="True"  Width="Auto"/>
+
+                    <DataGridTextColumn Header="Duration" 
+                                        Binding="{Binding Duration}" IsReadOnly="True"  Width="Auto"/>
+
+                    <DataGridTextColumn Header="StartAirDate" 
+                                        Binding="{Binding StartAirDate, StringFormat=dd-MM-yyyy}" IsReadOnly="True"  Width="Auto"/>
+
+                    <DataGridTextColumn Header="EndAirDate" 
+                                        Binding="{Binding EndAirDate, StringFormat=dd-MM-yyyy}" IsReadOnly="True"  Width="Auto"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</UserControl>

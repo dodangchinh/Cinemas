@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Chinh_C1_Cinemas.UcDisplayOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chinh_C1_Cinemas" xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <local:StatusToStringConverter x:Key="statusToStringConverter"/>
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:FontAwesome Icon="Edit" />
+                                <ContentPresenter />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+
+    <Border CornerRadius="10" Background="#EFF2F7">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Members Data Grid-->
+            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      CellStyle="{DynamicResource DataGridCellStyle1}" 
+                      x:Name="dgOrders"
+                      Style="{DynamicResource DataGridStyle1}"
+                      Grid.Row="3">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" 
+                                        Binding="{Binding Id}" IsReadOnly="True"  Width="Auto"/>
+
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding Name}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="Phone Number"
+                                        Binding="{Binding PhoneNumber}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="Movie"
+                                        Binding="{Binding scheduleShowTimes.schedule.Movie.Name}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="CinemaType"
+                                        Binding="{Binding CinemaType}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="Date"
+                                        Binding="{Binding Date, StringFormat=\{0:dd-MM-yyyy HH:mm\}}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTextColumn Header="Total"
+                                        Binding="{Binding Total}" IsReadOnly="True"  Width="Auto"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate>
+                                <Button Command="{Binding Path=DataContext.ActiveCommand,RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" 
+                                        CommandParameter="{Binding}" Width="28" FontSize="25"
+                                        Style="{StaticResource IconButtonLock}" 
+                                        Content="{StaticResource FontAwesomeDetailIcon}"
+                                        ToolTip="Detail"
+                                        Name="btnDetail"
+                                        Click="btnDetail_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEE433F3-C413-4412-A310-B722C91817F9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Chinh_C1_Cinemas</RootNamespace>
+    <AssemblyName>Chinh_C1_Cinemas</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cinema.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\AuthenticationToTypeBooleanConverter.cs" />
+    <Compile Include="Converters\IndexConverter.cs" />
+    <Compile Include="Converters\StatusToStringConverter.cs" />
+    <Compile Include="Converters\TemplateSelector.cs" />
+    <Compile Include="frmAdmin.xaml.cs">
+      <DependentUpon>frmAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.xaml.cs">
+      <DependentUpon>frmLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUser.xaml.cs">
+      <DependentUpon>frmUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\AccountRepository.cs" />
+    <Compile Include="Infrastructure\CinemaRepository.cs" />
+    <Compile Include="Infrastructure\MovieRepository.cs" />
+    <Compile Include="Infrastructure\OrdersRepository.cs" />
+    <Compile Include="Infrastructure\ScheduleRepository.cs" />
+    <Compile Include="Infrastructure\ScheduleShowTimesRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Cinema.cs" />
+    <Compile Include="Models\CinemaStandard.cs" />
+    <Compile Include="Models\CinemaVip.cs" />
+    <Compile Include="Models\DataProvider.cs" />
+    <Compile Include="Models\DetailOrder.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\OrderInformation.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ScheduleShowTimes.cs" />
+    <Compile Include="Models\Seat.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AgeService.cs" />
+    <Compile Include="Services\CinemaService.cs" />
+    <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
+    <Compile Include="Services\ScheduleShowTimeService.cs" />
+    <Compile Include="Utilities\Convert.cs" />
+    <Compile Include="Utilities\DataType.cs" />
+    <Compile Include="Utilities\Helper.cs" />
+    <Compile Include="Utilities\Parameter.cs" />
+    <Compile Include="Utilities\UnitOfWork.cs" />
+    <Compile Include="Utilities\Validator.cs" />
+    <Compile Include="Views\AdminViews\MovieViews\frmAddMovie.xaml.cs">
+      <DependentUpon>frmAddMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\CinemaViews\UcDisplayCinema.xaml.cs">
+      <DependentUpon>UcDisplayCinema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\MovieViews\frmEditMovie.xaml.cs">
+      <DependentUpon>frmEditMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\MovieViews\UcDisplayMovie.xaml.cs">
+      <DependentUpon>UcDisplayMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\OrderViews\frmDisplayOrderDetail.xaml.cs">
+      <DependentUpon>frmDisplayOrderDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\OrderViews\UcDisplayOrders.xaml.cs">
+      <DependentUpon>UcDisplayOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\ScheduleShowTineViews\frmAddScheduleShowTime.xaml.cs">
+      <DependentUpon>frmAddScheduleShowTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\ScheduleViews\frmAddSchedule.xaml.cs">
+      <DependentUpon>frmAddSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\ScheduleViews\UcDisplaySchedule.xaml.cs">
+      <DependentUpon>UcDisplaySchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\ScheduleShowTineViews\UcDisplayScheduleShowTime.xaml.cs">
+      <DependentUpon>UcDisplayScheduleShowTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\UserControls\dataGrid.xaml.cs">
+      <DependentUpon>dataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\UserControls\InfoCard.xaml.cs">
+      <DependentUpon>InfoCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcDisplayOrder.xaml.cs">
+      <DependentUpon>UcDisplayOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcInformation.xaml.cs">
+      <DependentUpon>UcInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcSelectionAge.xaml.cs">
+      <DependentUpon>UcSelectionAge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcSelectionMovie.xaml.cs">
+      <DependentUpon>UcSelectionMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcSelectionScheduleShowTime.xaml.cs">
+      <DependentUpon>UcSelectionScheduleShowTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\UcSelectionSeat.xaml.cs">
+      <DependentUpon>UcSelectionSeat.xaml</DependentUpon>
+    </Compile>
+    <Page Include="frmAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListViews.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ScrollView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TabControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Texts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminViews\MovieViews\frmAddMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\CinemaViews\UcDisplayCinema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\MovieViews\frmEditMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\MovieViews\UcDisplayMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\OrderViews\frmDisplayOrderDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\OrderViews\UcDisplayOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\ScheduleShowTineViews\frmAddScheduleShowTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\ScheduleViews\frmAddSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\ScheduleViews\UcDisplaySchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\ScheduleShowTineViews\UcDisplayScheduleShowTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\UserControls\dataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminViews\UserControls\InfoCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserViews\UcDisplayOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\UcInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\UcSelectionAge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\UcSelectionMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\UcSelectionScheduleShowTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\UcSelectionSeat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <Resource Include="Fonts\FontAwesome.otf" />
+    <Resource Include="Fonts\iconfont.ttf" />
+    <Resource Include="Fonts\iconfontFifth.ttf" />
+    <Resource Include="Fonts\iconfontFourth.ttf" />
+    <Resource Include="Fonts\iconfontSecond.ttf" />
+    <Resource Include="Fonts\iconfontThird.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\purchase.png" />
+    <Resource Include="Images\return.png" />
+    <Resource Include="Images\sale.png" />
+    <Resource Include="Images\u1.png" />
+    <Resource Include="Images\u2.png" />
+    <Resource Include="Images\u3.png" />
+    <Resource Include="Images\u4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cinema.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
